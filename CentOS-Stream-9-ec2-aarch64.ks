@@ -91,8 +91,6 @@ NetworkManager
 cloud-utils-growpart
 gdisk
 
-# add insight-clients
-insights-client
 %end
 
 #

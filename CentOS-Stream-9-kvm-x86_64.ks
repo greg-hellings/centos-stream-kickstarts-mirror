@@ -128,9 +128,6 @@ redhat-release-eula
 # Add rng-tools as source of entropy
 rng-tools
 
-# RH Insights client, for public cloud providers
-insights-client
-
 %end
 
 #
