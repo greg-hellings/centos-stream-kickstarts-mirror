@@ -11,7 +11,7 @@ selinux --enforcing
 firewall --enabled --service=ssh
 network --bootproto=dhcp --device=link --activate --onboot=on
 #services --enabled=sshd,ovirt-guest-agent --disabled kdump,rhsmcertd
-services --enabled=sshd,NetworkManager,cloud-init,cloud-init-local,cloud-config,cloud-final,rngd --disabled kdump,rhsmcertd
+services --enabled=sshd,NetworkManager,cloud-init,cloud-init-local,cloud-config,cloud-final --disabled kdump,rhsmcertd
 rootpw --iscrypted nope
 
 #
@@ -124,9 +124,6 @@ redhat-release
 redhat-release-eula
 -fedora-release
 -fedora-repos
-
-# Add rng-tools as source of entropy
-rng-tools
 
 %end
 

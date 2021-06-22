@@ -131,10 +131,6 @@ redhat-release-eula
 -fedora-release
 -fedora-repos
 
-# Add rng-tools as source of entropy
-# TODO: Not available in Fedora-ELN yet.
-# rng-tools
-
 %end
 
 #

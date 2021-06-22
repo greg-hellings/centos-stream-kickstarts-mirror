@@ -10,7 +10,7 @@ auth --enableshadow --passalgo=sha512
 selinux --enforcing
 firewall --enabled --service=ssh
 network --bootproto=dhcp --device=link --activate --onboot=on
-services --enabled=sshd,NetworkManager,cloud-init,cloud-init-local,cloud-config,cloud-final,rngd --disabled kdump,rhsmcertd
+services --enabled=sshd,NetworkManager,cloud-init,cloud-init-local,cloud-config,cloud-final --disabled kdump,rhsmcertd
 
 rootpw --iscrypted nope
 
@@ -28,7 +28,6 @@ reboot
 @core
 kernel
 yum-utils
-rng-tools
 redhat-release
 redhat-release-eula
 
