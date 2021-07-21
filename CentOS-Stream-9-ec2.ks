@@ -65,9 +65,8 @@ cloud-init
 # https://bugzilla.redhat.com/show_bug.cgi?id=966993
 #cloud-utils
 
-# We need this image to be portable; also, rescue mode isn't useful here.
+# We need this image to be portable
 dracut-config-generic
-dracut-norescue
 
 # We need a bootloader. grub2 because of xfs.
 grub2
