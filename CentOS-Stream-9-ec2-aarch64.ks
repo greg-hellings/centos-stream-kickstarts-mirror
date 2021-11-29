@@ -4,7 +4,6 @@ text
 lang en_US.UTF-8
 keyboard us
 timezone --utc UTC
-#RHBZ 1732491 Bump nvme_core io.timeout to avoid AWS nitro instance freeze
 bootloader --timeout=1 --location=mbr --append="console=ttyS0,115200n8 console=tty0 net.ifnames=0 rd.blacklist=nouveau nvme_core.io_timeout=4294967295"
 auth --enableshadow --passalgo=sha512
 #authselect select sssd
@@ -31,8 +30,6 @@ reboot
 kernel
 yum-utils
 rng-tools
-redhat-release
-redhat-release-eula
 
 # pull firmware packages out
 -aic94xx-firmware
@@ -68,8 +65,9 @@ cloud-init
 # https://bugzilla.redhat.com/show_bug.cgi?id=966993
 #cloud-utils
 
-# We need this image to be portable
+# We need this image to be portable; also, rescue mode isn't useful here.
 dracut-config-generic
+dracut-norescue
 
 # We need a bootloader. grub2 because of xfs.
 grub2
@@ -83,6 +81,9 @@ rsync
 dhcp-client
 NetworkManager
 
+# certs for RHUI
+# Disabled for now, RHUI will not be active just yet
+# No RHUI for RHEL-9 yet.
 #rh-amazon-rhui-client
 
 # Some things from @core we can do without in a minimal install
@@ -247,5 +248,10 @@ cat >> /etc/chrony.conf << EOF
 # Amazon Time Sync Service
 server 169.254.169.123 prefer iburst minpoll 4 maxpoll 4
 EOF
+
+# Anaconda is writing to /etc/resolv.conf from the generating environment.
+# The system should start out with an empty file.
+# Resolves: ENGCMP-1342
+truncate -s 0 /etc/resolv.conf
 
 %end

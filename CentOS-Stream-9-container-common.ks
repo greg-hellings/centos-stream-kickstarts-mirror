@@ -18,7 +18,7 @@
 
 text # don't use cmdline -- https://github.com/rhinstaller/anaconda/issues/931
 bootloader --disabled
-timezone --isUtc --nontp Etc/UTC
+timezone --utc --nontp Etc/UTC
 rootpw --lock --iscrypted locked
 keyboard us
 network --bootproto=dhcp --device=link --activate --onboot=on
@@ -37,6 +37,8 @@ redhat-release
 bash
 rootfiles
 coreutils-single
+curl-minimal
+libcurl-minimal
 glibc-minimal-langpack
 crypto-policies-scripts
 -kernel
@@ -95,5 +97,7 @@ rm -f /etc/sysconfig/network-scripts/ifcfg-*
 # Remove machine-id on pre generated images
 rm -f /etc/machine-id
 touch /etc/machine-id
+# Keep permissions the same as the systemd RPM so rpm --verify works
+chmod 0444 /etc/machine-id
 
 %end
