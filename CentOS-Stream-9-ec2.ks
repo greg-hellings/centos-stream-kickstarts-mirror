@@ -69,7 +69,6 @@ cloud-init
 
 # We need this image to be portable; also, rescue mode isn't useful here.
 dracut-config-generic
-dracut-norescue
 
 # We need a bootloader. grub2 because of xfs.
 grub2
