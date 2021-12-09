@@ -20,7 +20,7 @@ rootpw --iscrypted nope
 %end
 
 part biosboot --fstype=biosboot --size=1 --ondisk vda
-part / --size 6144 --fstype xfs --ondisk vda
+part / --size 6144 --fstype xfs -m bigtime=0,inobtcount=0 --ondisk vda
 reboot
 
 
