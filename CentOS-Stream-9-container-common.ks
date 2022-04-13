@@ -69,11 +69,6 @@ ln -s /run/secrets/rhsm /etc/rhsm-host
 #https://bugzilla.redhat.com/show_bug.cgi?id=1201663
 rm -f /etc/systemd/system/multi-user.target.wants/rhsmcertd.service
 
-#fips mode
-# secrets patch creates /run/secrets/system-fips if /etc/system-fips exists on the host
-#in turn, openssl in the container checks /etc/system-fips but dangling symlink counts as nonexistent
-ln -s /run/secrets/system-fips /etc/system-fips
-
 # Set install langs macro so that new rpms that get installed will
 # only install langs that we limit it to.
 LANG="C.utf8"
