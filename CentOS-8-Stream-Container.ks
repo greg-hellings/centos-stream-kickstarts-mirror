@@ -86,6 +86,7 @@ rm -f /etc/udev/hwdb.bin
 rm -rf /usr/lib/udev/hwdb.d/
 rm -rf /boot
 rm -rf /var/lib/dnf/history.*
+rm -f /var/lib/systemd/random-seed
 
 
 %end
